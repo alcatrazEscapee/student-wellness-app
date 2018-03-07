@@ -1,0 +1,47 @@
+<!-- Required Dependencies: May remove once fleshing out the app -->
+<link rel="import" href="bower_components/note-app-elements/na-elements.html">
+<link rel="import" href="bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
+<link rel="import" href="bower_components/polymerfire/polymerfire.html">
+
+<link rel="import" href="src/resource-list-object.html">
+
+<dom-module id="sws-main">
+  <template>
+    <!-- This is the configuration used for all the children of this module -->
+  
+	<firebase-query
+      id="query"
+      app-name="sws-main"
+      path="/resources"
+      data="{{resources}}">
+	</firebase-query>
+	
+	<app-indexeddb-mirror
+      key="resources"
+      data="{{resources}}"
+      persisted-data="{{persistedResources}}">
+	</app-indexeddb-mirror>
+	
+	<p>This is some text on the sws-main page.</p>
+	
+	<div class="notes">
+	  <template is="dom-repeat" items="[[persistedResources]]" as="note">
+	    <resource-list-object
+		  resource="[[note]]">
+		</resource-list-object>
+	  </template>
+    </div>
+  
+    <p>Template Text</p>
+  </template>
+  
+  <!-- Required for polymer to recognize this -->
+  <script>
+	Polymer({
+	  is: 'sws-main',
+	  
+	  behaviors: [Polymer.NoteAppBehavior]
+	  
+	});
+</script>
+</dom-module>
