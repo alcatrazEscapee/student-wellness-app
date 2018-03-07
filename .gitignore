@@ -1,4 +1,7 @@
-bower_components/
 build/
 node_modules/
 test/
+
+# Exceptions for Alex's foler:
+note-app.html
+firebase-debug.log
