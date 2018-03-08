@@ -1,0 +1,12 @@
+{
+  "name": "student-resource-app",
+  "homepage": "",
+  "description": "",
+  "main": "index.html",
+  "license": "",
+  "dependencies": {
+    "polymerfire": "firebase/polymerfire#^2.2.1",
+    "platinum-sw": "PolymerElements/platinum-sw#^2.1.0",
+    "iron-pages": "PolymerElements/iron-pages#^2.1.0"
+  }
+}
