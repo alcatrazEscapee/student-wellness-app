@@ -1,9 +1,14 @@
-<!-- Required Dependencies: May remove once fleshing out the app -->
-<link rel="import" href="bower_components/note-app-elements/na-elements.html">
+<!-- Required Bower Dependencies -->
 <link rel="import" href="bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
 <link rel="import" href="bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="bower_components/app-route/app-route.html">
+<link rel="import" href="bower_components/app-route/app-location.html">
 
 <link rel="import" href="src/resource-list-object.html">
+<link rel="import" href="sws-home-view.html">
+<link rel="import" href="sws-list-view.html">
+
 
 <dom-module id="sws-main">
   <template>
@@ -22,6 +27,25 @@
       persisted-data="{{persistedResources}}">
 	</app-indexeddb-mirror>
 	
+	<!-- app-location binds to the app's URL -->
+	<app-location route="{{route}}"></app-location>
+	<!-- this app-route manages the top-level routes -->
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}">
+	</app-route>
+		
+	<!-- iron-pages controls which page is currently visible -->
+	<iron-pages role="main" selected="[[routeData.page]]" attr-for-selected="name" selected-attribute="visible" fallback-selection="home">
+		<!-- Home Pages with resource sorting buttons -->
+		<sws-home-view name="home"></sws-home-view>
+		<!-- List of resources -->
+		<sws-list-view name="list"></sws-list-view>
+	</iron-pages>
+		
+	
 	<p>This is some text on the sws-main page.</p>
 	
 	<div class="notes">
@@ -38,10 +62,8 @@
   <!-- Required for polymer to recognize this -->
   <script>
 	Polymer({
-	  is: 'sws-main',
-	  
-	  behaviors: [Polymer.NoteAppBehavior]
-	  
+	is: 'sws-main',
+	
 	});
-</script>
+  </script>
 </dom-module>
