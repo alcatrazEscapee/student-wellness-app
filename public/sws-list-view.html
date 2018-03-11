@@ -1,14 +1,51 @@
+<link rel="import" href="bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="bower_components/app-route/app-route.html">
+<link rel="import" href="bower_components/app-route/app-location.html">
+
+<link rel="import" href="src/resource-list-object.html">
+
 <dom-module id="sws-list-view">
 <template>
   
   <p>This is the list view</p>
+  <p>Filter String: "{{filter}}" was given</p>
+  <p>A shitty attempt at javascript</p>
   <p><a href="/">Click to go back to the home view</a></p>
   
+  <div class="notes">
+	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{computeFilter(filter)}}">
+		<!-- This is an object responsible for displaying a resource's information tab -->
+		<resource-list-object resource="[[note]]"></resource-list-object>
+	  </template>
+    </div>
+  
 </template>
-<!-- Required for polymer to recognize this -->
+<!-- 
+The computeFilter(string) is the magic behind the filtering
+ - It takes an argument 'filter' which is the subroute passed by sws-main
+ - It then returns a function which will be used for this instance of sws-list-view
+To make the filtering more advanced, edit the return function(note)
+ - 'note.type' is the type id in the database
+ - 'string' is the current subroute
+Currently it can only filter one category.
+TODO:
+ - Make it turn note.type and string into arrays and compare if everything in [string] is in [note.type]
+ -->
 <script>
   Polymer({
-    is: 'sws-list-view'
+    is: 'sws-list-view',
+	
+	computeFilter(string){
+		if (!string){
+			return null;
+		} else {
+			return function(note) {
+				var withSlash = "/"+note.type;
+				return withSlash == string;
+			}
+		}
+	}
 	  	  
   });
 </script>
