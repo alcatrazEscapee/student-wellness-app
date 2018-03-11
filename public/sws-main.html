@@ -29,32 +29,38 @@
 	
 	<!-- app-location binds to the app's URL -->
 	<app-location route="{{route}}"></app-location>
+	
 	<!-- this app-route manages the top-level routes -->
     <app-route
         route="{{route}}"
-        pattern="/:page"
+        pattern="/:view"
         data="{{routeData}}"
         tail="{{subroute}}">
 	</app-route>
 		
 	<!-- iron-pages controls which page is currently visible -->
-	<iron-pages role="main" selected="[[routeData.page]]" attr-for-selected="name" selected-attribute="visible" fallback-selection="home">
+	<iron-pages role="main" selected="[[routeData.view]]" attr-for-selected="name" selected-attribute="visible" fallback-selection="home">
 		<!-- Home Pages with resource sorting buttons -->
 		<sws-home-view name="home"></sws-home-view>
 		<!-- List of resources -->
-		<sws-list-view name="list"></sws-list-view>
+		<sws-list-view
+		  name="list" 
+		  resources="{{persistedResources}}" 
+		  filter="{{subroute.path}}">
+		</sws-list-view>
 	</iron-pages>
 		
 	
 	<p>This is some text on the sws-main page.</p>
 	
+	<!-- 
+	@Deprecated - Moved to sws-list-view
 	<div class="notes">
-	  <template is="dom-repeat" items="[[persistedResources]]" as="note">
-	    <resource-list-object
-		  resource="[[note]]">
-		</resource-list-object>
+	  <template is="dom-repeat" items="[[persistedResources]]" as="note" filter="isMental">
+		
+		<resource-list-object resource="[[note]]"></resource-list-object>
 	  </template>
-    </div>
+    </div>-->
   
     <p>Template Text</p>
   </template>
@@ -62,8 +68,7 @@
   <!-- Required for polymer to recognize this -->
   <script>
 	Polymer({
-	is: 'sws-main',
-	
+	is: 'sws-main'
 	});
   </script>
 </dom-module>
