@@ -1,0 +1,53 @@
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+
+<link rel="import" href="resource-list-object.html">
+
+<dom-module id="sws-individual-view">
+<template>
+  
+  <p>This is the individual view</p>
+  <p>Trying to look at the resource with uid: "{{target}}"</p>
+  <p><a href="#/">Click to go back to the home view</a></p>
+  
+  <div class="notes">
+	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{getTarget(target)}}">
+		<!-- This is an object responsible for displaying a resource's information tab -->
+		<p>------------------------------------</p>
+		<h3>Name of Resource: [[note.name]]</h3>
+		<p>This is meant to be the full description of the resource</p>
+		<p>Short Description: [[note.desc]]</p>
+		<p>Type Tags: [[note.type]]</p>
+		<p>Service Tags: [[note.service]]</p>
+		<p>Email: [[note.email]]</p>
+		<p>Phone: [[note.phone]]</p>
+		<p>------------------------------------</p>
+	  </template>
+    </div>
+  
+</template>
+
+<script>
+  Polymer({
+    is: 'sws-individual-view',
+	
+	getTarget(string){
+		if (!string){
+			return null;
+		} else {
+			return function(note) {
+				console.log('DEBUG: comparing'+string+' and a '+note.uid);
+				if(string.substr(1) == note.uid){
+					return true;
+				}
+				return false;
+			}
+		}
+	}
+	  	  
+  });
+</script>
+
+</dom-module>
