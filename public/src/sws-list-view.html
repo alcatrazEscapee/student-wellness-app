@@ -1,9 +1,9 @@
-<link rel="import" href="bower_components/polymerfire/polymerfire.html">
-<link rel="import" href="bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="bower_components/app-route/app-route.html">
-<link rel="import" href="bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
 
-<link rel="import" href="src/resource-list-object.html">
+<link rel="import" href="resource-list-object.html">
 
 <dom-module id="sws-list-view">
 <template>
@@ -11,7 +11,7 @@
   <p>This is the list view</p>
   <p>Filter String: "{{filter}}" was given</p>
   <p>A shitty attempt at javascript</p>
-  <p><a href="/">Click to go back to the home view</a></p>
+  <p><a href="#/">Click to go back to the home view</a></p>
   
   <div class="notes">
 	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{computeFilter(filter)}}">
@@ -41,8 +41,10 @@ TODO:
 			return null;
 		} else {
 			return function(note) {
-				var withSlash = "/"+note.type;
-				return withSlash == string;
+				if(string.substr(1) == 'view-all'){
+					return true;
+				}
+				return note.type.includes(string.substr(1));
 			}
 		}
 	}
