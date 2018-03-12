@@ -41,8 +41,7 @@ TODO:
 			return null;
 		} else {
 			return function(note) {
-				var withSlash = "/"+note.type;
-				return withSlash == string;
+				return note.type.includes(string.substr(1));
 			}
 		}
 	}
