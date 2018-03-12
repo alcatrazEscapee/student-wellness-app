@@ -41,6 +41,9 @@ TODO:
 			return null;
 		} else {
 			return function(note) {
+				if(string.substr(1) == 'view-all'){
+					return true;
+				}
 				return note.type.includes(string.substr(1));
 			}
 		}
