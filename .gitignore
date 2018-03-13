@@ -2,6 +2,9 @@ build/
 node_modules/
 test/
 
+# Exceptions for Nalsen's folder:
+.idea/
+
 # Exceptions for Alex's foler:
 note-app.html
 firebase-debug.log
