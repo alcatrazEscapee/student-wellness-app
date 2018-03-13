@@ -8,6 +8,7 @@
 <link rel="import" href="resource-list-object.html">
 <link rel="import" href="sws-home-view.html">
 <link rel="import" href="sws-list-view.html">
+<link rel="import" href="sws-individual-vew.html">
 
 
 <dom-module id="sws-main">
@@ -48,6 +49,12 @@
 		  resources="{{persistedResources}}" 
 		  filter="{{subroute.path}}">
 		</sws-list-view>
+		<!-- Viewing one resource at a time -->
+		<sws-individual-view
+		  name="view"
+		  resources="{{persistedResources}}"
+		  target="{{subroute.path}}">
+		</sws-individual-view>
 	</iron-pages>
 		
 	
