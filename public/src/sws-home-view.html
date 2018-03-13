@@ -1,21 +1,35 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="sample-content.html">
+
 <dom-module id="sws-home-view">
-<template>
-  
-  <p>This is the home view</p>
-  <p><a href="#/list/mental-health">Link to view mental</a></p>
-  <p><a href="#/list/physical-health">Link to view physical</a></p>
-  <p><a href="#/list/academic-career">Link to view academic or career</a></p>
-  <p><a href="#/list/politics-policy">Link to politics and policy</a></p>
-  <p><a href="#/list/identity-culture">Link to view identity and culture</a></p>
-  <p><a href="#/list/view-all">Link to view EVERYTHING!!!</a></p>
-  
-</template>
-<!-- Required for polymer to recognize this -->
-<script>
-  Polymer({
-    is: 'sws-home-view'
-	  	  
-  });
-</script>
+    <template>
+       <style include="shared-styles">
+        :host {
+          display: block;
+
+          padding: 10px;
+        }
+      </style>
+
+      <div class="card">
+          <div class="circle">H</div>
+      <p><a href="#/list/mental-health">Link to view mental</a></p>
+      <p><a href="#/list/physical-health">Link to view physical</a></p>
+      <p><a href="#/list/academic-career">Link to view academic or career</a></p>
+      <p><a href="#/list/politics-policy">Link to politics and policy</a></p>
+      <p><a href="#/list/identity-culture">Link to view identity and culture</a></p>
+      <p><a href="#/list/view-all">Link to view EVERYTHING!!!</a></p>
+      </div>
+        <!-- Filling-->
+        <sample-content size="10"></sample-content>
+    </template>
+    <!-- Required for polymer to recognize this -->
+    <script>
+      Polymer({
+        is: 'sws-home-view'
+
+      });
+    </script>
 
 </dom-module>

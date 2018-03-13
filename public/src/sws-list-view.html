@@ -1,3 +1,6 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
 <link rel="import" href="../bower_components/polymerfire/polymerfire.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
@@ -7,19 +10,30 @@
 
 <dom-module id="sws-list-view">
 <template>
-  
-  <p>This is the list view</p>
-  <p>Filter String: "{{filter}}" was given</p>
-  <p>A shitty attempt at javascript</p>
-  <p><a href="#/">Click to go back to the home view</a></p>
-  
-  <div class="notes">
+    <style include="shared-styles">
+        :host {
+            display: block;
+
+            padding: 10px;
+        }
+    </style>
+  <div class="card">
+      <div class="circle">L</div>
+      <p>This is the list view</p>
+      <p>Filter String: "{{filter}}" was given</p>
+      <p>A shitty attempt at javascript</p>
+      <p><a href="#/">Click to go back to the home view</a></p>
+  </div>
+
+  <div class="card">
+    <div class="notes">
 	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{computeFilter(filter)}}">
 		<!-- This is an object responsible for displaying a resource's information tab -->
 		<resource-list-object resource="[[note]]"></resource-list-object>
 	  </template>
     </div>
-  
+  </div>
+
 </template>
 <!-- 
 The computeFilter(string) is the magic behind the filtering
