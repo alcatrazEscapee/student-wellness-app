@@ -3,31 +3,37 @@
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 
+<link rel="import" href="shared-styles.html">
+
 <link rel="import" href="resource-list-object.html">
 
 <dom-module id="sws-individual-view">
-<template>
+  <template>
+    <style include="shared-styles">
+        :host {
+            display: block;
+
+            padding: 10px;
+        }
+    </style
   
-  <p>This is the individual view</p>
-  <p>Trying to look at the resource with uid: "{{target}}"</p>
-  <p><a href="#/">Click to go back to the home view</a></p>
+    <!-- This views a single resource with the UID: "{{target}}"-->
+    <p><a href="#/">Home</a></p>
   
-  <div class="notes">
+    <div class="card">
 	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{getTarget(target)}}">
 		<!-- This is an object responsible for displaying a resource's information tab -->
-		<p>------------------------------------</p>
-		<h3>Name of Resource: [[note.name]]</h3>
-		<p>This is meant to be the full description of the resource</p>
+		<h3>Currently Viewing: [[note.name]]</h3>
 		<p>Short Description: [[note.desc]]</p>
-		<p>Type Tags: [[note.type]]</p>
-		<p>Service Tags: [[note.service]]</p>
+		<p>Contact Information:</p>
 		<p>Email: [[note.email]]</p>
 		<p>Phone: [[note.phone]]</p>
-		<p>------------------------------------</p>
+		<p>[Debug] Type Tags: [[note.type]]</p>
+		<p>[Debug] Service Tags: [[note.service]]</p>
 	  </template>
     </div>
   
-</template>
+  </template>
 
 <script>
   Polymer({
@@ -38,7 +44,6 @@
 			return null;
 		} else {
 			return function(note) {
-				console.log('DEBUG: comparing'+string+' and a '+note.uid);
 				if(string.substr(1) == note.uid){
 					return true;
 				}

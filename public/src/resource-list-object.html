@@ -1,6 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
-<link rel="import" href="sample-content.html">
 
 <dom-module id="resource-list-object">
 <template>
@@ -12,13 +11,8 @@
         }
     </style>
   <div class="card">
-      <span>Not much here yet.</span>
-
-      <p>------------------------------------</p>
-      <h3>Name of Resource: [[resource.name]]</h3>
-      <p>Short Description: [[resource.desc]]</p>
-      <p><a href="#/view/[[resource.uid]]">Link to view the resource on a seperate page and see more</a></p>
-      <p>------------------------------------</p>
+      <h3>[[resource.name]]</h3>
+      <p>[[resource.desc]] <a href="#/view/[[resource.uid]]">View More</a></p>
   </div>
 
 </template>
