@@ -15,11 +15,11 @@
 
             padding: 10px;
         }
-    </style
+    </style>
   
     <!-- This views a single resource with the UID: "{{target}}"-->
-    <p><a href="#/">Home</a></p>
-  
+
+
     <div class="card">
 	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{getTarget(target)}}">
 		<!-- This is an object responsible for displaying a resource's information tab -->
@@ -32,7 +32,7 @@
 		<p>[Debug] Service Tags: [[note.service]]</p>
 	  </template>
     </div>
-  
+
   </template>
 
 <script>
