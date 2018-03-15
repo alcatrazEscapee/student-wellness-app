@@ -17,15 +17,13 @@
             padding: 10px;
         }
     </style>
-  <div class="card">
-      <div class="circle">L</div>
-      <p>This is the list view</p>
-      <p>Filter String: "{{filter}}" was given</p>
-      <p>A shitty attempt at javascript</p>
-      <p><a href="#/">Click to go back to the home view</a></p>
+  <div class="top-header">
+      <!--<div class="circle">L</div>-->
+      <p>Currently viewing resources that are classified as: {{filter}}</p>
+      <p><a href="#/">Home</a></p>
   </div>
 
-  <div class="card">
+  <div class="thick-card">
     <div class="notes">
 	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{computeFilter(filter)}}">
 		<!-- This is an object responsible for displaying a resource's information tab -->
