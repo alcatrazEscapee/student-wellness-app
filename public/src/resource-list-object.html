@@ -1,4 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="paper-card.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="resource-list-object">
@@ -10,10 +13,22 @@
             padding: 10px;
         }
     </style>
-  <div class="card">
-      <h3>[[resource.name]]</h3>
-      <p>[[resource.desc]] <a href="#/view/[[resource.uid]]">View More</a></p>
-  </div>
+    <div role="listbox">
+        <!--
+        <paper-icon-item>
+            <div class="avatar blue" slot="item-icon"></div>
+            <paper-item-body two-line>
+                <div>[[resource.name]]</div>
+                <div secondary>[[resource.desc]] <a href="#/view/[[resource.uid]]"><paper-button>View More</paper-button></a></div>
+            </paper-item-body>
+            <paper-icon-button icon="star" alt="favourite this!">
+            </paper-icon-button>
+        </paper-icon-item>
+        -->
+        <div class="card">
+            <h3>[[resource.name]]</h3>
+            <p>[[resource.desc]] <a href="#/view/[[resource.uid]]">View More</a></p>
+        </div>
 
 </template>
 <!-- Required for polymer to recognize this -->
