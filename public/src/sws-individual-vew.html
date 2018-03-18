@@ -15,23 +15,68 @@
 
             padding: 10px;
         }
+		
+		h4{
+			padding:0px;
+			margin:0px;
+		}
     </style>
   
     <!-- This views a single resource with the UID: "{{target}}"-->
 
 
-    <div class="card">
-	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{getTarget(target)}}">
-		<!-- This is an object responsible for displaying a resource's information tab -->
-		<h3>Currently Viewing: [[note.name]]</h3>
-		<p>Short Description: [[note.desc]]</p>
-		<p>Contact Information:</p>
-		<p>Email: [[note.email]]</p>
-		<p>Phone: [[note.phone]]</p>
-		<p>[Debug] Type Tags: [[note.type]]</p>
-		<p>[Debug] Service Tags: [[note.service]]</p>
-	  </template>
-    </div>
+	<template is="dom-repeat" items="{{resources}}" as="note" filter="{{getTarget(target)}}">
+	  <div class="card">
+		<!-- This is an object responsible for displaying a resource's information tab 
+		
+		Displayed on the main card:
+		 - name of resource
+		 - description		 
+		Displayed on "contact info" card (will display only what is available):
+		 - location (if available)
+		 - hours (if available)
+		 - email (if available)
+		 - all phone numbers
+		 - displaying all links in a list
+		
+		-->
+		<h2>Currently Viewing: [[note.name]]</h2>
+		<p>[[note.desc]]</p>
+	  </div>
+	  <div class="card">
+		<h3>Contact Information:</h3>
+		
+		<template is="dom-if" if="{{hasNAN(note.location)}}">
+		  <h4>Where:</h4>
+		  <p>[[note.location]]</p>
+		</template>
+		
+		<template is="dom-if" if="{{hasNAN(note.hours)}}">
+		  <h4>Hours:</h4>
+		  <p>[[note.hours]]</p>
+		</template>
+		
+		<template is="dom-if" if="{{hasNAN(note.email)}}">
+		  <h4>Email:</h4>
+		  <p>[[note.email]]</p>
+		</template>
+		
+		<template is="dom-if" if="{{hasNonNull(note.phones)}}">
+		  <h4>Phone:</h4>
+		  <template is="dom-repeat" items="{{_toArray(note.phones)}}" as="phone">
+		    <p>[[phone.value.name]]: [[phone.value.number]]</p>
+		  </template>
+		</template>
+		
+		<template is="dom-if" if="{{hasNonNull(note.links)}}">
+		  <h4>View Online:</h4>
+		  <template is="dom-repeat" items="{{_toArray(note.links)}}" as="link">
+		    <p><a href="{{link.value.url}}">[[link.value.name]]</a></p>
+		  </template>
+		</template>
+
+      </div>
+	</template>
 
   </template>
 
@@ -50,7 +95,27 @@
 				return false;
 			}
 		}
-	}
+	},
+	
+	hasNAN(data){
+		if(data != null){
+			return data != "" && data != "n/a";
+		};
+		return false;
+	},
+	
+	hasNonNull(data){
+		return data!=null
+	},
+	
+	_toArray: function(obj) {
+        return Object.keys(obj).map(function(key) {
+            return {
+                name: key,
+                value: obj[key]
+            };
+        });
+    }
 	  	  
   });
 </script>

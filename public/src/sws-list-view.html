@@ -8,6 +8,8 @@
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+
 <link rel="import" href="resource-list-object.html">
 
 <!-- Service Tags:  email, phone, in-person, peer, facebook -->
@@ -22,14 +24,17 @@
         }
     </style>
   <div class="top-header">
-      <!--<div class="circle">L</div>-->
       <p>Currently viewing resources that are classified as: {{filter}}</p>
+	  <p>Use the buttons below to help find what you need:</p>
+	  <!-- Note: currently this doesn't do anything, I will try and make it function later -->
+	  <paper-radio-button checked="{{phonesort}}">Phone Call</paper-radio-button>
+	  <!--<paper-radio-button>Email</paper-radio-button>-->
 
   </div>
 
   <div class="thick-card">
     <div class="notes">
-	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{computeFilter(filter)}}">
+	  <template id="resourceList" is="dom-repeat" items="{{resources}}" as="note" filter="{{computeFilter(filter)}}">
 		<!-- This is an object responsible for displaying a resource's information tab -->
 		<resource-list-object resource="[[note]]"></resource-list-object>
 	  </template>
@@ -64,6 +69,20 @@ TODO:
 			}
 		}
 	}
+	/*
+	properties: {
+		phonesort: {
+			type: Boolean,
+			value: false,
+			observer: 'refreshFilter',
+			notify: true,
+			reflectToAttribute: true
+		}
+	},
+	
+	refreshFilter: function() {
+		this.$.resourceList.render();
+    }*/
 	  	  
   });
 </script>
