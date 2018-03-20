@@ -8,7 +8,11 @@
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+
 <link rel="import" href="resource-list-object.html">
+
+<!-- Service Tags:  email, phone, in-person, peer, facebook -->
 
 <dom-module id="sws-list-view">
 <template>
@@ -20,17 +24,27 @@
         }
     </style>
   <div class="top-header">
-      <!--<div class="circle">L</div>-->
       <p>Currently viewing resources that are classified as: {{filter}}</p>
+	  <p>Use the buttons below to help find what you need:</p>
+	  <paper-checkbox checked="{{phonesort}}">Phone</paper-checkbox>
+	  <paper-checkbox checked="{{emailsort}}">Email</paper-checkbox>
+	  <paper-checkbox checked="{{inpersonsort}}">In Person</paper-checkbox>
+	  <paper-checkbox checked="{{peersort}}">Peer</paper-checkbox>
+	  <paper-checkbox checked="{{facebooksort}}">Facebook</paper-checkbox>
+	  <!--<paper-radio-button>Email</paper-radio-button>-->
 
   </div>
 
   <div class="thick-card">
     <div class="notes">
-	  <template is="dom-repeat" items="{{resources}}" as="note" filter="{{computeFilter(filter)}}">
+	  <template id="resourceList" is="dom-repeat" items="{{resources}}" as="note" filter="{{computeFilter(filter)}}">
 		<!-- This is an object responsible for displaying a resource's information tab -->
-		<resource-list-object resource="[[note]]"></resource-list-object>
+		<template is="dom-if" if="{{doCheckboxes(phonesort,note.phones,emailsort,note.email,inpersonsort,peersort,facebooksort,note.service)}}">
+		  <resource-list-object resource="[[note]]"></resource-list-object>
+		</template>
 	  </template>
+	  
+	  <p>End of Resources / No Resources to Display</p>
     </div>
   </div>
 
@@ -58,10 +72,60 @@ TODO:
 				if(string.substr(1) == 'view-all'){
 					return true;
 				}
+				/*console.log("DEBUG: Checking phonesort: "+this[phonesort]);
+				if(this[phonesort] == true){
+					return false;
+				}*/
 				return note.type.includes(string.substr(1));
 			}
 		}
+	},
+	properties: {
+      phonesort: {
+        type: Boolean,
+        value: false
+      }
+	},
+	
+	hasNAN(data){
+		if(data != null){
+			return data != "" && data != "n/a";
+		};
+		return false;
+	},
+	
+	hasTag(data,tag){
+		return data.includes(tag);
+	},
+	
+	doCheckboxes(sort1,data1,sort2,data2,sort3,sort4,sort5,servicetags){
+		if(sort1 == true && data1 == null){
+			return false;
+		}
+		if(sort2 == true){
+			if(data2 == null){
+				return false;
+			}else{
+				if(data2 == "" || data2 == "n/a"){
+					return false;
+				}
+			}
+		}
+		if(sort3 == true && !servicetags.includes("in-person")){
+			return false;
+		}
+		if(sort4 == true && !servicetags.includes("peer")){
+			return false;
+		}
+		if(sort5 == true && !servicetags.includes("facebook")){
+			return false;
+		}
+		return true;
 	}
+	
+	/*refreshFilter: function() {
+		this.$.resourceList.render();
+    }*/
 	  	  
   });
 </script>
