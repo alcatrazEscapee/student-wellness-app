@@ -1,174 +1,134 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
-<link rel="import" href="paper-card.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="sws-home-view">
     <template>
-       <style include="shared-styles">
-        :host {
-          display: block;
+        <style include="shared-styles">
+            :host {
+                display: block;
 
-          padding: 10px;
-        }
-
-        .content {
-            display: block;
-            position: relative;
-            max-width: 1000px;
-            margin: 5px auto;
-        }
-
-        .card-container {
-            display: inline-block;
-            width: 33.33%;
-            color: black;
-            text-decoration: none;
-        }
-
-        paper-card {
-            display: block;
-            margin: 5px;
-
-            width: 5vw;
-
-            --paper-card-header-image: {
-               size: inherit;
-            }
-        }
-
-        paper-card h2 {
-            margin: 4px;
-            font-weight: normal;
-        }
-
-        paper-card p {
-            margin: 4px;
-            color: #999;
-        }
-
-        paper-fab {
-            position: fixed;
-            right: 24px;
-            bottom: 24px;
-
-            --paper-fab-background: #fff2;
-            --paper-fab-keyboard-focus-background: #fff;
-        }
-
-        @media (max-width: 960px) {
-            .content {
-                max-width: 800px;
+                padding: 10px;
             }
 
-            .card-container {
-                width: 50%;
-            }
-        }
 
-        .content {
-            max-width: 400px;
-        }
 
-        .card-container {
-            width: 100%;
-        }
+            @media (max-width: 719px) {
+                app-toolbar {
+                    height: 60px;
+                }
 
-        @media (max-width: 960px) {
-            .content {
-                max-width: 800px;
-            }
+                [condensed-title] {
+                    background-image: url('//app-layout-assets.appspot.com/assets/pesto/logo_s.png');
+                    background-size: 60px;
+                }
 
-            .card-container {
-                width: 50%;
-            }
-        }
+                [main-title] {
+                    top: -60px;
+                    background-image: url('//app-layout-assets.appspot.com/assets/pesto/logo_m.png');
+                    background-size: 90px;
+                }
 
-        @media (max-width: 719px) {
-            app-toolbar {
-                height: 60px;
-            }
+                .content {
+                    max-width: 400px;
+                }
 
-            [condensed-title] {
-                background-image: url('//app-layout-assets.appspot.com/assets/pesto/logo_s.png');
-                background-size: 60px;
+                .card-container {
+                    width: 100%;
+                }
             }
 
-            [main-title] {
-                top: -60px;
-                background-image: url('//app-layout-assets.appspot.com/assets/pesto/logo_m.png');
-                background-size: 90px;
-            }
+        </style>
 
-            .content {
-                max-width: 400px;
-            }
-
-            .card-container {
-                width: 100%;
-            }
-        }
-
-       </style>
+        <custom-style>
+            <style is="custom-style">
+                paper-card.menubtn {
+                    font: 14px/21px Arial;
+                    border: 1px solid #dddddd;
+                    padding: 5px 10px;
+                    background: #ffffff;
+                    color: #696969;
+                    text-decoration: none;
+                    --paper-card-header-color: #fff;
+                    font-weight: bold;
+                    width: 100%;
+                    height: 100%;
+                }
+                .horizontal {
+                    @apply --layout-horizontal;
+                }
+                .btnheader {
+                    @apply --paper-font-headline;
+                }
+            </style>
+        </custom-style>
 
         <!-- buttons -->
         <div class="horizontal">
-        <a href="#/list/mental-health">
-            <paper-card heading="Mental Health" image="./src/images/buttons/Mental.png" alt="Mental" class="white" style="margin-right:4px;">
-                <div class="card-actions horizontal justified">
-                    <paper-icon-button icon="favorite"></paper-icon-button>
-                    <paper-icon-button icon="bookmark"></paper-icon-button>
-                    <paper-icon-button icon="social:share"></paper-icon-button>
-                </div>
-            </paper-card>
-        </a>
-        <a href="#/list/physical-health">
-            <paper-card heading="Physical Health" image="./src/images/buttons/Physical.png" alt="Mental" class="white" style="margin-right:4px;">
-                <div class="card-actions horizontal justified">
-                    <paper-icon-button icon="favorite"></paper-icon-button>
-                    <paper-icon-button icon="bookmark"></paper-icon-button>
-                    <paper-icon-button icon="social:share"></paper-icon-button>
-                </div>
-            </paper-card>
-        </a>
+            <a href="#/list/mental-health">
+                <paper-card heading="" image="./src/images/buttons/Mental.png" alt="Mental" class="menubtn">
+                    <div class="btnheader">Mental Health</div>
+                    <div class="card-actions horizontal justified">
+                        <div class="card-content">
+                            I feel really bad today.
+                        </div>
+                    </div>
+                </paper-card>
+            </a>
+            <a href="#/list/physical-health">
+                <paper-card heading="" image="./src/images/buttons/Physical.png" alt="Mental" class="menubtn">
+                    <div class="btnheader">Physical Health</div>
+                    <div class="card-actions horizontal justified">
+                        <div class="card-content">
+                            I feel really bad today.
+                        </div>
+                    </div>
+                </paper-card>
+            </a>
         </div>
         <div class="horizontal">
             <a href="#/list//list/academic-career">
-                <paper-card heading="Academic / Career" image="./src/images/buttons/AcaCar.png" alt="Mental" class="white" style="margin-right:4px;">
+                <paper-card heading="" image="./src/images/buttons/AcaCar.png" alt="Mental" class="menubtn">
+                    <div class="btnheader">Academic / Career</div>
                     <div class="card-actions horizontal justified">
-                        <paper-icon-button icon="favorite"></paper-icon-button>
-                        <paper-icon-button icon="bookmark"></paper-icon-button>
-                        <paper-icon-button icon="social:share"></paper-icon-button>
+                        <div class="card-content">
+                            I feel really bad today.
+                        </div>
                     </div>
                 </paper-card>
             </a>
             <a href="#/list/politics-policy">
-                <paper-card heading="Politics / Policy" image="./src/images/buttons/Policy.png" alt="Mental" class="white" style="margin-right:4px;">
+                <paper-card heading="" image="./src/images/buttons/Policy.png" alt="Mental" class="menubtn">
+                    <div class="btnheader">Politics / Policy</div>
                     <div class="card-actions horizontal justified">
-                        <paper-icon-button icon="favorite"></paper-icon-button>
-                        <paper-icon-button icon="bookmark"></paper-icon-button>
-                        <paper-icon-button icon="social:share"></paper-icon-button>
+                        <div class="card-content">
+                            I feel really bad today.
+                        </div>
                     </div>
                 </paper-card>
             </a>
         </div>
         <div class="horizontal">
             <a href="#/list/identity-culture">
-                <paper-card heading="Identity / Culture" image="./src/images/buttons/IdCul.png" alt="Mental" class="white" style="margin-right:4px;">
+                <paper-card heading="" image="./src/images/buttons/GloCul.png" alt="Mental" class="menubtn">
+                    <div class="btnheader">Identity / Culture</div>
                     <div class="card-actions horizontal justified">
-                        <paper-icon-button icon="favorite"></paper-icon-button>
-                        <paper-icon-button icon="bookmark"></paper-icon-button>
-                        <paper-icon-button icon="social:share"></paper-icon-button>
+                        <div class="card-content">
+                            I feel really bad today.
+                        </div>
                     </div>
                 </paper-card>
             </a>
             <a href="#/list/view-all">
-                <paper-card heading="View All" image="./src/images/buttons/All.png" alt="Mental" class="white" style="margin-right:4px;">
+                <paper-card heading="" image="./src/images/buttons/All.png" alt="Mental" class="menubtn">
+                    <div class="btnheader">View All</div>
                     <div class="card-actions horizontal justified">
-                        <paper-icon-button icon="favorite"></paper-icon-button>
-                        <paper-icon-button icon="bookmark"></paper-icon-button>
-                        <paper-icon-button icon="social:share"></paper-icon-button>
+                        <div class="card-content">
+                            I feel really bad today.
+                        </div>
                     </div>
                 </paper-card>
             </a>
@@ -177,10 +137,10 @@
     </template>
     <!-- Required for polymer to recognize this -->
     <script>
-      Polymer({
-        is: 'sws-home-view'
+        Polymer({
+            is: 'sws-home-view'
 
-      });
+        });
     </script>
 
 </dom-module>

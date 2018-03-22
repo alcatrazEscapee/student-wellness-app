@@ -18,6 +18,8 @@
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
 
 
 <!-- import custom-style element -->
@@ -31,198 +33,250 @@
 <link rel="import" href="sws-view404.html">
 <link rel="import" href="sws-icons.html">
 <link rel="import" href="sws-individual-vew.html">
+<link rel="import" href="sws-emergency.html">
 
 <dom-module id="sws-main">
 
-  <template>
+    <template>
 
-    <style>
+        <style>
 
-        [main-title] {
-            font-size: 7.27vmin;
-            font-weight:500;
-        }
+            [main-title] {
+                font-size: 7.27vmin;
+                font-weight:500;
+            }
 
-    app-drawer-layout:not([narrow]) [drawer-toggle] {
-      display: none;
-    }
+            app-drawer-layout:not([narrow]) [drawer-toggle] {
+                display: none;
+            }
 
-    app-drawer section {
-      height: 100%;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
+            app-drawer section {
+                height: 100%;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
 
-    app-drawer h2 {
-      margin: 8px 0 0;
-      padding: 18px;
-      font-size: 18px;
-    }
+            app-drawer h2 {
+                margin: 8px 0 0;
+                padding: 18px;
+                font-size: 18px;
+            }
 
-    app-drawer paper-checkbox {
-      display: block;
-      padding: 18px;
-    }
+            app-drawer paper-checkbox {
+                display: block;
+                padding: 18px;
+            }
 
-    app-header {
-      color: #fff;
-      background-color: #C62828;
-      --app-header-background-front-layer: {
-        background-image: url(images/shellbackground.jpg);
-        background-position: 50% 10%;
-      };
-    }
+            app-header {
+                color: #fff;
+                background-color: #9E1839;
+                --app-header-background-front-layer: {
+                    background-image: url(images/background/shellbackground.jpg);
+                    background-position: 50% 10%;
+                };
+            }
 
-    .drawer-content {
-        margin-top: 80px;
-        height: calc(100% - 80px);
-        overflow: auto;
-    }
+            .drawer-content {
+                margin-top: 80px;
+                height: calc(100% - 80px);
+                overflow: auto;
+            }
 
-   paper-icon-button {
-       color: #fff;
-   }
+            paper-icon-button {
+                color: #fff;
+            }
 
-    </style>
+        </style>
 
-    <!-- This is the configuration used for all the children of this module -->
+        <!-- This is the configuration used for all the children of this module -->
 
-	<firebase-query
-      id="query"
-      app-name="sws-main"
-      path="/resources"
-      data="{{resources}}">
-	</firebase-query>
+        <firebase-query
+                id="query"
+                app-name="sws-main"
+                path="/resources"
+                data="{{resources}}">
+        </firebase-query>
 
-	<app-indexeddb-mirror
-      key="resources"
-      data="{{resources}}"
-      persisted-data="{{persistedResources}}">
-	</app-indexeddb-mirror>
+        <app-indexeddb-mirror
+                key="resources"
+                data="{{resources}}"
+                persisted-data="{{persistedResources}}">
+        </app-indexeddb-mirror>
 
-	<!-- app-location binds to the app's URL -->
-	<app-location route="{{route}}" use-hash-as-path></app-location>
+        <!-- app-location binds to the app's URL -->
+        <app-location route="{{route}}" use-hash-as-path></app-location>
 
-	<!-- this app-route manages the top-level routes -->
-    <app-route
-        route="{{route}}"
-        pattern="/:view"
-        data="{{routeData}}"
-        tail="{{subroute}}">
-	</app-route>
+        <!-- this app-route manages the top-level routes -->
+        <app-route
+                route="{{route}}"
+                pattern="/:view"
+                data="{{routeData}}"
+                tail="{{subroute}}">
+        </app-route>
 
-      <!-- ------------------CONTENT------------------ -->
+        <!-- ------------------CONTENT------------------ -->
 
-      <app-drawer-layout>
-          <!-- drawer -->
-          <app-drawer swipe-open drawer.close() slot="drawer">
-              <!-- drawer content -->
-              <div class="drawer-content">
-                  <paper-icon-item>
-                      <a href="http://www.queensu.ca/" tabindex="-1">
-                      <paper-icon-button src="src/images/queenslogo.png" alt="queens" title="queens"></paper-icon-button>
-                  </a> <span>Vist Queen's Homepage</span>
-                  </paper-icon-item>
-                  <paper-icon-item>
-                      <a href="https://github.com/alcatrazEscapee/student-wellness-app" tabindex="-1">
-                      <paper-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="github" title="github"></paper-icon-button>
-                  </a> <span>Vist Us on Github</span>
-                  </paper-icon-item>
-              </div>
+        <app-drawer-layout>
+            <!-- drawer -->
+            <app-drawer swipe-open drawer.close() slot="drawer">
+                <section>
+                    <!-- drawer content -->
+                    <div class="drawer-content">
+                        <h1>Quick Access</h1>
+                        <a href="#/list/mental-health" tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/Mental.png" alt="mental" title="Mental Health"></paper-icon-button>
+                            <span>Mental Health</span>
+                        </a><br/>
+                        <a href="#/list/physical-health" tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/Physical.png" alt="physical" title="Physical Health"></paper-icon-button>
+                            <span>Physical Health</span>
+                        </a><br/>
+                        <a href="#/list//list/academic-career" tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/AcaCar.png" alt="acacar" title="Academic & Career"></paper-icon-button>
+                            <span>Academic & Career</span>
+                        </a><br/>
+                        <a href="#/list/politics-policy" tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/Policy.png" alt="policy" title="Politics & Policy"></paper-icon-button>
+                            <span>Politics & Policy</span>
+                        </a><br/>
+                        <a href="#/list/identity-culture" tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/GloCul.png" alt="idcul" title="Identity & Culture"></paper-icon-button>
+                            <span>Identity & Culture</span>
+                        </a><br/>
+                        <a href="#/list/view-all" tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/All.png" alt="all" title="All"></paper-icon-button>
+                            <span>All Resources</span>
+                        </a><br/>
 
-          </app-drawer>
+                        <h1>Info</h1>
 
-          <!-- navbar panel-->
-          <app-header-layout>
+                        <a href="http://www.queensu.ca/" tabindex="-1">
+                            <paper-icon-button src="src/images/icons/queenslogo.png" alt="queens" title="queens"></paper-icon-button>
+                            <span>Vist Queen's Homepage</span>
+                        </a><br/>
+                        <a href="https://github.com/alcatrazEscapee/student-wellness-app" tabindex="-1">
+                            <paper-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="github" title="github"></paper-icon-button>
+                            <span>Vist Us on Github</span>
+                        </a><br/>
+                    </div>
+                </section>
+            </app-drawer>
 
-              <app-header
-                      condenses
-                      fixed
-                      shadow
-                      effects="waterfall resize-title blend-background parallax-background"
-                      slot="header">
+            <!-- navbar panel-->
+            <app-header-layout>
 
-                  <app-toolbar>
-                      <!-- menu button -->
-                      <paper-icon-button
-                              drawer-toggle
-                              icon="app:menu"
-                              hidden$="[[_shouldHideMenuButton(pageData.page, narrow)]]">
-                      </paper-icon-button>
-                      <!-- back button -->
-                      <a
-                              href="#{{subroute.path}}/list"
-                              hidden$="[[_equal(pageData.page, 'list')]]">
-                          <paper-icon-button
+                <app-header
+                        condenses
+                        fixed
+                        shadow
+                        effects="waterfall resize-title blend-background parallax-background"
+                        slot="header">
 
-                                  icon="app:arrow-back">
-                          </paper-icon-button>
-                      </a>
-                      <div condensed-title>Student Resource App</div>
-                      <a href="#/" tabindex="-1">
-                          <paper-icon-button src="src/images/icons/homeico.svg" alt="home" title="home"></paper-icon-button>
-                      </a>
-                  </app-toolbar>
+                    <app-toolbar>
+                        <!-- menu button -->
+                        <paper-icon-button
+                                drawer-toggle
+                                icon="app:menu"
+                                hidden$="[[_shouldHideMenuButton(pageData.page, narrow)]]">
+                        </paper-icon-button>
+                        <!-- back button -->
+                        <a
+                                href="#/list"
+                                tabindex="-1"
+                                hidden$="[[_equal(pageData.page, 'home')]]">
+                            <paper-icon-button
+                                    icon="app:arrow-back">
+                            </paper-icon-button>
+                        </a>
+                        <div condensed-title>Student Resource App</div>
+                        <!-- emergency button -->
+                        <!--
+                        <paper-menu-button>
+                            <paper-icon-button src="src/images/icons/emergency.png" slot="dropdown-trigger" alt="emergency" title="emergency"></paper-icon-button>
+                            <paper-listbox slot="dropdown-content">
+                                <a href="tel:***">
+                                <paper-item>911</paper-item>
+                                </a>
+                                <a href="tel:***">
+                                <paper-item>Campus Security</paper-item>
+                                </a>
+                            </paper-listbox>
+                        </paper-menu-button>
+                        -->
 
-                  <app-toolbar>
-                      <div main-title spacer>Student Resource App</div>
-                  </app-toolbar>
+                        <a href="#/emergency" tabindex="-1">
+                            <paper-icon-button src="src/images/icons/emergency.png" alt="emergency" title="emergency"></paper-icon-button>
+                        </a>
 
-              </app-header>
+                        <!-- home button -->
+                        <a href="#/" tabindex="-1">
+                            <paper-icon-button src="src/images/icons/homeico.svg" alt="home" title="home"></paper-icon-button>
+                        </a>
+                    </app-toolbar>
 
-              <!-- iron-pages controls which page is currently visible -->
-              <iron-pages role="main"
-                          selected="[[routeData.view]]"
-                          attr-for-selected="name"
-                          selected-attribute="visible"
-                          fallback-selection="home">
-                  <!-- Home Pages with resource sorting buttons -->
-                  <sws-home-view name="home"
-                                 selected="[[pageData.page]]">
-                  </sws-home-view>
-                  <!-- List of resources -->
-                  <sws-list-view name="list"
-                                 selected="[[categoryData.category]]"
-                                 resources="{{persistedResources}}"
-                                 filter="{{subroute.path}}">
-                  </sws-list-view>
-                  <!-- Viewing one resource at a time -->
-                  <sws-individual-view
-                          name="view"
-                          resources="{{persistedResources}}"
-                          target="{{subroute.path}}">
-                  </sws-individual-view>
-              </iron-pages>
+                    <app-toolbar>
+                        <div main-title spacer>Student Resource App</div>
+                    </app-toolbar>
+
+                </app-header>
+
+                <!-- iron-pages controls which page is currently visible -->
+                <iron-pages role="main"
+                            selected="[[routeData.view]]"
+                            attr-for-selected="name"
+                            selected-attribute="visible"
+                            fallback-selection="home">
+                    <!-- Home Pages with resource sorting buttons -->
+                    <sws-home-view name="home"
+                                   selected="[[pageData.page]]">
+                    </sws-home-view>
+                    <!-- List of resources -->
+                    <sws-list-view name="list"
+                                   selected="[[categoryData.category]]"
+                                   resources="{{persistedResources}}"
+                                   filter="{{subroute.path}}">
+                    </sws-list-view>
+                    <!-- Viewing one resource at a time -->
+                    <sws-individual-view name="view"
+                                         resources="{{persistedResources}}"
+                                         target="{{subroute.path}}">
+                    </sws-individual-view>
+                    <!-- emergency contact -->
+                    <sws-emergency name="emergency"
+                                   selected="[[pageData.page]]">
+                    </sws-emergency>
+                </iron-pages>
 
 
-          </app-header-layout>
+            </app-header-layout>
 
-      </app-drawer-layout>
+        </app-drawer-layout>
 
 
-   <!--
-      @Deprecated - Moved to sws-list-view
-      <div class="notes">
-        <template is="dom-repeat" items="[[persistedResources]]" as="note" filter="isMental">
+        <!--
+           @Deprecated - Moved to sws-list-view
+           <div class="notes">
+             <template is="dom-repeat" items="[[persistedResources]]" as="note" filter="isMental">
 
-        <resource-list-object resource="[[note]]"></resource-list-object>
-       </template>
-      </div>
-    -->
+             <resource-list-object resource="[[note]]"></resource-list-object>
+            </template>
+           </div>
+         -->
 
-  </template>
+    </template>
 
-  <script>
+    <script>
 
-  Polymer({
+        Polymer({
 
-    is: 'sws-main',
+            is: 'sws-main',
 
-    properties: {
-        scriptlol: Object
-    }
-  });
+            properties: {
+                resources: Object,
 
-  </script>
+            }
+        });
+
+    </script>
 
 </dom-module>
