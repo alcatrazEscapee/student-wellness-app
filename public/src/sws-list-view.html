@@ -24,8 +24,9 @@
         }
     </style>
   <div class="top-header">
-      <p>Currently viewing resources that are classified as: {{filter}}</p>
-	  <p>Use the buttons below to help find what you need:</p>
+      <p>Currently viewing {{niceStringOf(filter)}}</p>
+	  <p>Use the buttons below to help find what you need, and click on any resource to see information about it.</p>
+	  
 	  <paper-checkbox checked="{{phonesort}}">Phone</paper-checkbox>
 	  <paper-checkbox checked="{{emailsort}}">Email</paper-checkbox>
 	  <paper-checkbox checked="{{inpersonsort}}">In Person</paper-checkbox>
@@ -121,6 +122,14 @@ TODO:
 			return false;
 		}
 		return true;
+	},
+	
+	niceStringOf(string){
+		if(string.substr(1) == 'view-all'){
+			return 'all resources.';
+		}else{
+			return string.substr(1)+' resources';
+		}
 	}
 	
 	/*refreshFilter: function() {

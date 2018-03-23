@@ -13,6 +13,21 @@
             padding: 10px;
         }
     </style>
+	
+	<custom-style>
+            <style is="custom-style">
+                paper-card.resbtn {
+                    font: 14px/21px Arial;
+                    border: 1px solid #dddddd;
+                    padding: 5px 10px;
+                    background: #ffffff;
+                    color: #696969;
+                    text-decoration: none;
+                    width: 100%;
+                    height: 100%;
+                }
+            </style>
+        </custom-style>
     <div role="listbox">
         <!--
         <paper-icon-item>
@@ -25,10 +40,13 @@
             </paper-icon-button>
         </paper-icon-item>
         -->
-        <div class="card">
-            <h3>[[resource.name]]</h3>
-            <p>[[resource.desc]] <a href="#/view/[[resource.uid]]">View More</a></p>
-        </div>
+		<a href="#/view/[[resource.uid]]">
+			<paper-card heading="[[resource.name]]" alt="[[resource.name]]" class="resbtn">
+				<div class="card-content">
+					<span>[[resource.desc]]</span>
+				</div>
+			</paper-card>
+		</a>
 
 </template>
 <!-- Required for polymer to recognize this -->
