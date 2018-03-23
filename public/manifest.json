@@ -4,8 +4,8 @@
   "start_url": "index.html",
   "display": "standalone",
   "orientation": "any",
-  "theme_color": "#C62828",
-  "background_color": "#C21616",
+  "theme_color": "#12335e",
+  "background_color": "#12335e",
   "icons": [{
     "src": "src/images/manifest/icon-36x36.png",
     "sizes": "36x36",
