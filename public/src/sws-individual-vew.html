@@ -64,7 +64,7 @@
 		<template is="dom-if" if="{{hasNonNull(note.phones)}}">
 		  <h4>Phone:</h4>
 		  <template is="dom-repeat" items="{{_toArray(note.phones)}}" as="phone">
-		    <p>[[phone.value.name]]: [[phone.value.number]]</p>
+		    <p>[[phone.value.name]]: <a href="tel:[[phone.value.number]]">[[parsePhoneNumber(phone.value.number)]]</a></p>
 		  </template>
 		</template>
 		
@@ -115,7 +115,12 @@
                 value: obj[key]
             };
         });
-    }
+    },
+	
+	parsePhoneNumber(number) {
+		str = number.toString();
+		return '('+str.substring(0,3)+') - '+str.substring(3,6)+' - '+str.substring(6);
+	}
 	  	  
   });
 </script>
