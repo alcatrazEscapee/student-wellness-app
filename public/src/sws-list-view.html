@@ -89,8 +89,8 @@ TODO:
 	
 	hasNAN(data){
 		if(data != null){
-			return data != "" && data != "n/a";
-		};
+			return data !== "" && data !== "n/a";
+		}
 		return false;
 	},
 	
@@ -99,25 +99,25 @@ TODO:
 	},
 	
 	doCheckboxes(sort1,data1,sort2,data2,sort3,sort4,sort5,servicetags){
-		if(sort1 == true && data1 == null){
+		if(sort1 === true && data1 == null){
 			return false;
 		}
-		if(sort2 == true){
+		if(sort2 === true){
 			if(data2 == null){
 				return false;
 			}else{
-				if(data2 == "" || data2 == "n/a"){
+				if(data2 === "" || data2 === "n/a"){
 					return false;
 				}
 			}
 		}
-		if(sort3 == true && !servicetags.includes("in-person")){
+		if(sort3 === true && !servicetags.includes("in-person")){
 			return false;
 		}
-		if(sort4 == true && !servicetags.includes("peer")){
+		if(sort4 === true && !servicetags.includes("peer")){
 			return false;
 		}
-		if(sort5 == true && !servicetags.includes("facebook")){
+		if(sort5 === true && !servicetags.includes("facebook")){
 			return false;
 		}
 		return true;
