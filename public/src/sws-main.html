@@ -46,26 +46,6 @@
                 font-weight:500;
             }
 
-            app-drawer-layout:not([narrow]) [drawer-toggle] {
-                display: none;
-            }
-
-            app-drawer section {
-                height: 100%;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            app-drawer h2 {
-                margin: 8px 0 0;
-                padding: 18px;
-                font-size: 18px;
-            }
-
-            app-drawer paper-checkbox {
-                display: block;
-                padding: 18px;
-            }
 
             app-header {
                 color: #fff;
@@ -82,11 +62,69 @@
                 overflow: auto;
             }
 
+            .drwerbtns {
+                display: flex !important;
+                flex-direction: row;
+                align-items: center;
+                color: rgba(48, 48, 48, 0.88);
+                font-weight: 500;
+                border: #FFFFFF;
+            }
+
+            .drwerbtns:hover {
+                background-color: #cecece;
+                color: #37474F;
+            }
+
             paper-icon-button {
                 color: #fff;
             }
 
+            section {
+                background-color: rgba(221, 221, 221, 0.72);
+                box-sizing: border-box;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 16px;
+                height: 151px;
+            }
+
+            span {
+                font: 14px/21px Arial;
+                color: #545454;
+                text-decoration: none;
+                font-weight: bold;
+                width: 100%;
+                height: 100%;
+            }
+
         </style>
+
+        <custom-style>
+            <style is="custom-style">
+                app-drawer-layout:not([narrow]) [drawer-toggle] {
+                    display: none;
+                }
+
+                app-drawer section {
+                    height: 100%;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                app-drawer h2 {
+                    margin: 8px 0 0;
+                    padding: 18px;
+                    font-size: 18px;
+                }
+
+                app-drawer paper-checkbox {
+                    display: block;
+                    padding: 18px;
+                }
+
+            </style>
+        </custom-style>
 
         <!-- This is the configuration used for all the children of this module -->
 
@@ -118,48 +156,57 @@
 
         <app-drawer-layout>
             <!-- drawer -->
-            <app-drawer swipe-open drawer.close() slot="drawer">
+            <app-drawer  swipe-open onclick="drawer.close()"  id="drawer" slot="drawer">
                 <section>
                     <!-- drawer content -->
                     <div class="drawer-content">
-                        <h1>Quick Access</h1>
-                        <a href="#/list/view-all" tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/All.png" alt="all" title="All"></paper-icon-button>
+                        <h2>Quick Access</h2>
+                        <a href="#/list/view-all" class="drwerbtns" drawer-toggle tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/All.png" alt="all" title="View All"></paper-icon-button>
                             <span>All Resources</span>
                         </a><br/>
-                        <a href="#/list/mental-health" tabindex="-1">
+                        <a href="#/list/mental-health" class="drwerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/Mental.png" alt="mental" title="Mental Health"></paper-icon-button>
                             <span>Mental Health</span>
                         </a><br/>
-                        <a href="#/list/physical-health" tabindex="-1">
+                        <a href="#/list/physical-health" class="drwerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/Physical.png" alt="physical" title="Physical Health"></paper-icon-button>
                             <span>Physical Health</span>
                         </a><br/>
-                        <a href="#/list/academic-career" tabindex="-1">
+                        <a href="#/list/academic-career" class="drwerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/AcaCar.png" alt="acacar" title="Academic & Career"></paper-icon-button>
                             <span>Academic & Career</span>
                         </a><br/>
-                        <a href="#/list/politics-policy" tabindex="-1">
+                        <a href="#/list/politics-policy" class="drwerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/Policy.png" alt="policy" title="Politics & Policy"></paper-icon-button>
                             <span>Politics & Policy</span>
                         </a><br/>
-                        <a href="#/list/identity-culture" tabindex="-1">
+                        <a href="#/list/identity-culture" class="drwerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/GloCul.png" alt="idcul" title="Identity & Culture"></paper-icon-button>
                             <span>Identity & Culture</span>
                         </a><br/>
-
-
-                        <h1>Info</h1>
-
-                        <a href="http://www.queensu.ca/" tabindex="-1">
+                        <a href="#/list/financial-help" class="drwerbtns" drawer-toggle tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/GloCul.png" alt="financial" title="Financial Help"></paper-icon-button>
+                            <span>Financial Help</span>
+                        </a><br/>
+                        <a href="#/list/harrasement-abuse" class="drwerbtns" drawer-toggle tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/GloCul.png" alt="bullying" title="Bullying / Harrassment"></paper-icon-button>
+                            <span>Bullying / Harrassment</span>
+                        </a><br/>
+                        <a href="#/list/sexual-help" class="drwerbtns" drawer-toggle tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/GloCul.png" alt="sexual" title="Sexual Help"></paper-icon-button>
+                            <span>Sexual Help</span>
+                        </a><br/>
+                        <h2>Info</h2>
+                        <a href="http://www.queensu.ca/" class="drwerbtns" tabindex="-1">
                             <paper-icon-button src="src/images/icons/queenslogo.png" alt="queens" title="queens"></paper-icon-button>
                             <span>Vist Queen's Homepage</span>
                         </a><br/>
-                        <a href="http://www.queensu.ca/studentaffairs/student-safety/sequre" tabindex="-1">
-                            <paper-icon-button src="src/images/icons/SeQure.jpg" alt="github" title="Download SeQure"></paper-icon-button>
+                        <a href="http://www.queensu.ca/studentaffairs/student-safety/sequre" class="drwerbtns" tabindex="-1">
+                            <paper-icon-button src="src/images/icons/SeQure.jpg" alt="sequre" title="Download SeQure"></paper-icon-button>
                             <span>Download Sequre App</span>
                         </a><br/>
-                        <a href="https://github.com/alcatrazEscapee/student-wellness-app" tabindex="-1">
+                        <a href="https://github.com/alcatrazEscapee/student-wellness-app" class="drwerbtns" tabindex="-1">
                             <paper-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="github" title="github"></paper-icon-button>
                             <span>See the Source Code</span>
                         </a><br/>
@@ -181,30 +228,17 @@
                     <app-toolbar>
                         <!-- menu button -->
                         <paper-icon-button
+                                close-on-activate
                                 drawer-toggle
+                                id="menuicon"
                                 icon="app:menu"
                                 hidden$="[[_shouldHideMenuButton(pageData.page, narrow)]]">
                         </paper-icon-button>
                         <!-- emergency button -->
-                        <!--
-                        <paper-menu-button>
-                            <paper-icon-button src="src/images/icons/emergency.png" slot="dropdown-trigger" alt="emergency" title="emergency"></paper-icon-button>
-                            <paper-listbox slot="dropdown-content">
-                                <a href="tel:***">
-                                <paper-item>911</paper-item>
-                                </a>
-                                <a href="tel:***">
-                                <paper-item>Campus Security</paper-item>
-                                </a>
-                            </paper-listbox>
-                        </paper-menu-button>
-                        -->
-
                         <a href="#/emergency" tabindex="-1">
                             <paper-icon-button src="src/images/icons/emergency.png" alt="emergency" title="emergency"></paper-icon-button>
                         </a>
                         <div condensed-title>Student Resource App</div>
-
 
                         <!-- home button -->
                         <a href="#/" tabindex="-1">
@@ -245,7 +279,6 @@
                     </sws-emergency>
                 </iron-pages>
 
-
             </app-header-layout>
 
         </app-drawer-layout>
@@ -265,6 +298,12 @@
             }
         });
 
+
+        _drawerSelected(); {
+            if (!this.$.drawer.persistent) {
+                this.$.drawer.close();
+            }
+        }
     </script>
 
 </dom-module>
