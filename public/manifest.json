@@ -1,6 +1,5 @@
 {
   "name": "Student Resource App",
-  "short_name": "Qrc",
   "scope": "./",
   "start_url": "index.html",
   "display": "standalone",

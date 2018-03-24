@@ -36,7 +36,7 @@
 
   </div>
 
-
+  <div class="thick-card">
     <div class="notes">
 	  <template id="resourceList" is="dom-repeat" items="{{resources}}" as="note" filter="{{computeFilter(filter)}}">
 		<!-- This is an object responsible for displaying a resource's information tab -->
@@ -44,10 +44,10 @@
 		  <resource-list-object resource="[[note]]"></resource-list-object>
 		</template>
 	  </template>
+	  
+	  <p>End of Resources / No Resources to Display</p>
     </div>
-
-        <p align="center">End of Resources / No Resources to Display</p>
-
+  </div>
 
 </template>
 <!-- 
@@ -70,7 +70,7 @@ TODO:
 			return null;
 		} else {
 			return function(note) {
-				if(string.substr(1) === 'view-all'){
+				if(string.substr(1) == 'view-all'){
 					return true;
 				}
 				/*console.log("DEBUG: Checking phonesort: "+this[phonesort]);
@@ -125,7 +125,7 @@ TODO:
 	},
 	
 	niceStringOf(string){
-		if(string.substr(1) === 'view-all'){
+		if(string.substr(1) == 'view-all'){
 			return 'all resources.';
 		}else{
 			return string.substr(1)+' resources';

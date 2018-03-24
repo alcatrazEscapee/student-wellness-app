@@ -165,7 +165,7 @@
                             <paper-icon-button src="src/images/buttons/All.png" alt="all" title="View All"></paper-icon-button>
                             <span>All Resources</span>
                         </a><br/>
-                        <a href="#/list/mental-health" class="drwerbtns" drawer-toggle tabindex="-1">
+                        <a href="#/list/mental-health" class="drwerbtns"firfir drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/Mental.png" alt="mental" title="Mental Health"></paper-icon-button>
                             <span>Mental Health</span>
                         </a><br/>
@@ -228,17 +228,30 @@
                     <app-toolbar>
                         <!-- menu button -->
                         <paper-icon-button
-                                close-on-activate
                                 drawer-toggle
-                                id="menuicon"
                                 icon="app:menu"
                                 hidden$="[[_shouldHideMenuButton(pageData.page, narrow)]]">
                         </paper-icon-button>
                         <!-- emergency button -->
+                        <!--
+                        <paper-menu-button>
+                            <paper-icon-button src="src/images/icons/emergency.png" slot="dropdown-trigger" alt="emergency" title="emergency"></paper-icon-button>
+                            <paper-listbox slot="dropdown-content">
+                                <a href="tel:***">
+                                <paper-item>911</paper-item>
+                                </a>
+                                <a href="tel:***">
+                                <paper-item>Campus Security</paper-item>
+                                </a>
+                            </paper-listbox>
+                        </paper-menu-button>
+                        -->
+
                         <a href="#/emergency" tabindex="-1">
                             <paper-icon-button src="src/images/icons/emergency.png" alt="emergency" title="emergency"></paper-icon-button>
                         </a>
                         <div condensed-title>Student Resource App</div>
+
 
                         <!-- home button -->
                         <a href="#/" tabindex="-1">
@@ -279,6 +292,7 @@
                     </sws-emergency>
                 </iron-pages>
 
+
             </app-header-layout>
 
         </app-drawer-layout>
@@ -298,12 +312,6 @@
             }
         });
 
-
-        _drawerSelected(); {
-            if (!this.$.drawer.persistent) {
-                this.$.drawer.close();
-            }
-        }
     </script>
 
 </dom-module>
