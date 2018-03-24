@@ -15,13 +15,56 @@
             }
         </style>
 
-        <a href="tel:###">
-            <paper-card>911</paper-card>
-        </a>
-
-        <a href="tel:***">
-            <paper-card>Campus Security</paper-card>
-        </a>
+        <custom-style>
+            <style is="custom-style">
+                paper-card.menubtn {
+                    font: 21px "Arial Black";
+                    border: 1px solid #dddddd;
+                    padding: 5px 10px;
+                    background: #ffffff;
+                    color: #696969;
+                    text-decoration: none;
+                    --paper-card-header-color: #691616;
+                    --paper-card-header-font: 1em;
+                    font-weight: bold;
+                    width: 100%;
+                    max-width: 744px;
+                    height: 100%;
+                    margin: auto;
+                }
+                .list {
+                    @apply --layout-center-center;
+                }
+                .btnheader {
+                    @apply --paper-font-headline;
+                    color: #ff0000;
+                }
+            </style>
+        </custom-style>
+        <div align="center" class="list">
+            <a href="tel:911">
+                <paper-card align="center" heading="" alt="911" class="menubtn">
+                    <div class="btnheader">911</div>
+                    <div class="card-actions horizontal justified">
+                        <div class="card-content">
+                            I feel really bad today.
+                        </div>
+                    </div>
+                </paper-card>
+            </a>
+        </div>
+        <div align="center" class="list">
+            <a href="tel: 613-533-6111">
+                <paper-card align="center" heading="" image="" alt="CER" class="menubtn">
+                    <div class="btnheader">Campus Emergency Response</div>
+                    <div class="card-actions horizontal justified">
+                        <div class="card-content">
+                            I feel really bad today.
+                        </div>
+                    </div>
+                </paper-card>
+            </a>
+        </div>
     </template>
 
     <script>
