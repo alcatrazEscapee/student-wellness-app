@@ -45,8 +45,6 @@
                 font-size: 7.27vmin;
                 font-weight:500;
             }
-
-
             app-header {
                 color: #fff;
                 background-color: #12335e;
@@ -55,14 +53,12 @@
                     background-position: 50% 10%;
                 };
             }
-
             .drawer-content {
                 margin-top: 80px;
                 height: calc(100% - 80px);
                 overflow: auto;
             }
-
-            .drwerbtns {
+            .drawerbtns {
                 display: flex !important;
                 flex-direction: row;
                 align-items: center;
@@ -70,16 +66,13 @@
                 font-weight: 500;
                 border: #FFFFFF;
             }
-
-            .drwerbtns:hover {
+            .drawerbtns:hover {
                 background-color: #cecece;
                 color: #37474F;
             }
-
             paper-icon-button {
                 color: #fff;
             }
-
             section {
                 background-color: rgba(221, 221, 221, 0.72);
                 box-sizing: border-box;
@@ -88,7 +81,6 @@
                 padding: 16px;
                 height: 151px;
             }
-
             span {
                 font: 14px/21px Arial;
                 color: #545454;
@@ -156,57 +148,63 @@
 
         <app-drawer-layout>
             <!-- drawer -->
-            <app-drawer  swipe-open onclick="drawer.close()"  id="drawer" slot="drawer">
+            <app-drawer  swipe-open onclick="closeDrawer()"  id="drawer" slot="drawer">
+                <script>
+                    function closeDrawer(){
+                        let drawer = this.$$('app-drawer')
+                        if( !drawer.persistent) drawer.toggle();
+                    }
+                </script>
                 <section>
                     <!-- drawer content -->
                     <div class="drawer-content">
                         <h2>Quick Access</h2>
-                        <a href="#/list/view-all" class="drwerbtns" drawer-toggle tabindex="-1">
+                        <a href="#/list/view-all" class="drawerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/All.png" alt="all" title="View All"></paper-icon-button>
                             <span>All Resources</span>
                         </a><br/>
-                        <a href="#/list/mental-health" class="drwerbtns"firfir drawer-toggle tabindex="-1">
+                        <a href="#/list/mental-health" class="drawerbtns"firfir drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/Mental.png" alt="mental" title="Mental Health"></paper-icon-button>
                             <span>Mental Health</span>
                         </a><br/>
-                        <a href="#/list/physical-health" class="drwerbtns" drawer-toggle tabindex="-1">
+                        <a href="#/list/physical-health" class="drawerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/Physical.png" alt="physical" title="Physical Health"></paper-icon-button>
                             <span>Physical Health</span>
                         </a><br/>
-                        <a href="#/list/academic-career" class="drwerbtns" drawer-toggle tabindex="-1">
+                        <a href="#/list/academic-career" class="drawerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/AcaCar.png" alt="acacar" title="Academic & Career"></paper-icon-button>
                             <span>Academic & Career</span>
                         </a><br/>
-                        <a href="#/list/politics-policy" class="drwerbtns" drawer-toggle tabindex="-1">
+                        <a href="#/list/politics-policy" class="drawerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/Policy.png" alt="policy" title="Politics & Policy"></paper-icon-button>
                             <span>Politics & Policy</span>
                         </a><br/>
-                        <a href="#/list/identity-culture" class="drwerbtns" drawer-toggle tabindex="-1">
+                        <a href="#/list/identity-culture" class="drawerbtns" drawer-toggle tabindex="-1">
                             <paper-icon-button src="src/images/buttons/GloCul.png" alt="idcul" title="Identity & Culture"></paper-icon-button>
                             <span>Identity & Culture</span>
                         </a><br/>
-                        <a href="#/list/financial-help" class="drwerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/GloCul.png" alt="financial" title="Financial Help"></paper-icon-button>
+                        <a href="#/list/financial-help" class="drawerbtns" drawer-toggle tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/financial.png" alt="financial" title="Financial Help"></paper-icon-button>
                             <span>Financial Help</span>
                         </a><br/>
                         <a href="#/list/harrasement-abuse" class="drwerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/GloCul.png" alt="bullying" title="Bullying / Harrassment"></paper-icon-button>
+                            <paper-icon-button src="src/images/buttons/bullying.png" alt="bullying" title="Bullying / Harrassment"></paper-icon-button>
                             <span>Bullying / Harrassment</span>
                         </a><br/>
-                        <a href="#/list/sexual-help" class="drwerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/GloCul.png" alt="sexual" title="Sexual Help"></paper-icon-button>
+                        <a href="#/list/sexual-help" class="drawerbtns" drawer-toggle tabindex="-1">
+                            <paper-icon-button src="src/images/buttons/sexual.png" alt="sexual" title="Sexual Help"></paper-icon-button>
                             <span>Sexual Help</span>
                         </a><br/>
                         <h2>Info</h2>
-                        <a href="http://www.queensu.ca/" class="drwerbtns" tabindex="-1">
+                        <a href="http://www.queensu.ca/" class="drawerbtns" tabindex="-1">
                             <paper-icon-button src="src/images/icons/queenslogo.png" alt="queens" title="queens"></paper-icon-button>
                             <span>Vist Queen's Homepage</span>
                         </a><br/>
-                        <a href="http://www.queensu.ca/studentaffairs/student-safety/sequre" class="drwerbtns" tabindex="-1">
-                            <paper-icon-button src="src/images/icons/SeQure.jpg" alt="sequre" title="Download SeQure"></paper-icon-button>
+                        <a href="http://www.queensu.ca/studentaffairs/student-safety/sequre" class="drawerbtns" tabindex="-1">
+                            <paper-icon-button src="src/images/icons/SeQure.jpg" style ="border-radius: 15%" alt="sequre" title="Download SeQure"></paper-icon-button>
                             <span>Download Sequre App</span>
                         </a><br/>
-                        <a href="https://github.com/alcatrazEscapee/student-wellness-app" class="drwerbtns" tabindex="-1">
+                        <a href="https://github.com/alcatrazEscapee/student-wellness-app" class="drawerbtns" tabindex="-1">
                             <paper-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="github" title="github"></paper-icon-button>
                             <span>See the Source Code</span>
                         </a><br/>

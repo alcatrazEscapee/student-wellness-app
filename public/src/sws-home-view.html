@@ -3,6 +3,7 @@
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="paper-carousel.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="sws-home-view">
@@ -13,16 +14,28 @@
 
                 padding: 10px;
             }
-
+            span {
+                font-size: 0.7rem;
+            }
         </style>
 
         <custom-style>
             <style is="custom-style">
+
+                paper-card:hover {
+                    background-color: #cecece;
+                    color: #37474F;
+                }
+                paper-card.menubtn:hover {
+                    background-color: #cecece;
+                    color: #37474F;
+                }
                 paper-card.viewall {
                     width: 100%;
-                    max-width: 744px;
+                    max-width: 640px;
                     height: 100%;
                     min-height: 100px;
+                    font-weight: bold;
                 }
                 paper-card.menubtn {
                     font: 14px/21px Arial;
@@ -33,21 +46,28 @@
                     text-decoration: none;
                     --paper-card-header-color: #fff;
                     font-weight: bold;
+                    max-width: 320px;
                     width: 100%;
-                    height: 100%;
+                    max-height: 568px;
+                    height: auto;
+                    overflow: hidden;
+                    flex: 1;
                 }
                 .all {
                     @apply --layout-center-center;
                 }
                 .horizontal {
+                    display: table-row;
                     @apply --layout-horizontal;
                     @apply --layout-center-center;
                 }
                 .viewallbtnheader {
-                    font-size: 3.25em;
+                    font-size: 50px;
                     @apply --layout-center-center;
                 }
                 .btnheader {
+                    font-size: 2rem;
+                    font-weight: bold;
                     @apply --paper-font-headline;
                 }
                 .image {
@@ -60,26 +80,33 @@
                     background-size: cover;
                     @apply --layout-vertical;
                 }
-
+                div
             </style>
         </custom-style>
         <!-- buttons -->
         <div align="center" class="all">
             <a href="#/list/view-all">
-                <paper-card align="center" alt="all" class="viewall">
-                    <div align="center" class="viewallbtnheader" style="">View All</div>
+                <paper-card alt="all" class="viewall">
+                    <div class="viewallbtnheader" spacer>View All</div>
                     <div class="image"></div>
                 </paper-card>
             </a>
         </div>
-
+        <!-- slides content
+        I don't know what I need, but I want help...
+        I’m upset and I just need to talk to someone...
+        I'm feeling sick and I don't know what's wrong...
+        I need to report an issue or problem...
+        I'm having trouble with class or finding a job...
+        I am being excluded based on my identity...
+        -->
         <div align="center" class="horizontal">
             <a href="#/list/mental-health">
-                <paper-card heading="" image="src/images/buttons/Mental.png" alt="mental" class="menubtn">
+                <paper-card heading="" image="src/images/buttons/Mental.png" id="btn" alt="mental" class="menubtn">
                     <div class="btnheader">Mental Health</div>
                     <div class="card-actions horizontal justified">
                         <div class="card-content">
-                            <span>I don't know what I need, but I want help...</span>
+                            I don't know what I need, but I want help...
                         </div>
                     </div>
                 </paper-card>
@@ -89,7 +116,7 @@
                     <div class="btnheader">Physical Health</div>
                     <div class="card-actions horizontal justified">
                         <div class="card-content">
-                            <span>I’m upset and I just need to talk to someone...</span>
+                            I don't know what I need, but I want help...
                         </div>
                     </div>
                 </paper-card>
@@ -102,40 +129,17 @@
                     <div class="btnheader">Politics / Policy</div>
                     <div class="card-actions horizontal justified">
                         <div class="card-content">
-                            <span>I'm feeling sick and I don't know what's wrong...</span>
+                            I don't know what I need, but I want help...
                         </div>
                     </div>
                 </paper-card>
             </a>
-            <a href="#/list/academic-career">
-                <paper-card heading="" image="src/images/buttons/AcaCar.png" alt="acacar" class="menubtn">
-                    <div class="btnheader">Academic / Career</div>
-                    <div class="card-actions horizontal justified">
-                        <div class="card-content">
-                            <span>I'm having trouble with class or finding a job...</span>
-                        </div>
-                    </div>
-                </paper-card>
-            </a>
-        </div>
-
-        <div align="center" class="horizontal">
             <a href="#/list/identity-culture">
                 <paper-card heading="" image="src/images/buttons/GloCul.png" alt="idcul" class="menubtn">
                     <div class="btnheader">Identity / Culture</div>
                     <div class="card-actions horizontal justified">
                         <div class="card-content">
-                            <span>I need to report an issue or problem...</span>
-                        </div>
-                    </div>
-                </paper-card>
-            </a>
-            <a href="#/list/financial-help">
-                <paper-card heading="" image="src/images/buttons/financial.png" alt="financial" class="menubtn">
-                    <div class="btnheader">Financial Help</div>
-                    <div class="card-actions horizontal justified">
-                        <div class="card-content">
-                            <span>I am being excluded based on my identity...</span>
+                            I don't know what I need, but I want help...
                         </div>
                     </div>
                 </paper-card>
@@ -143,22 +147,47 @@
         </div>
 
         <div align="center" class="horizontal">
-            <a href="#/list/harrasement-abuse">
-                <paper-card heading="" image="src/images/buttons/bullying.png" alt="bullying" class="menubtn">
-                    <div class="btnheader">Bullying / Harrassment</div>
+
+            <a href="#/list/academic-career">
+                <paper-card heading="" image="src/images/buttons/AcaCar.png" alt="acacar" class="menubtn">
+                    <div class="btnheader">Academic / Career</div>
                     <div class="card-actions horizontal justified">
                         <div class="card-content">
-                            I feel really bad today.
+                            I don't know what I need, but I want help...
                         </div>
                     </div>
                 </paper-card>
             </a>
+            <a href="#/list/harrasement-abuse">
+                <paper-card heading="" image="src/images/buttons/bullying.png" alt="abuse" class="menubtn">
+                    <div class="btnheader">Harrassment / Abuse</div>
+                    <div class="card-actions horizontal justified">
+                        <div class="card-content">
+                            I don't know what I need, but I want help...
+                        </div>
+                    </div>
+                </paper-card>
+            </a>
+        </div>
+
+        <div align="center" class="horizontal">
+            <a href="#/list/financial-help">
+                <paper-card heading="" image="src/images/buttons/financial.png" alt="financial" class="menubtn">
+                    <div class="btnheader">Financial Help</div>
+                    <div class="card-actions horizontal justified">
+                        <div class="card-content">
+                            I don't know what I need, but I want help...
+                        </div>
+                    </div>
+                </paper-card>
+            </a>
+
             <a href="#/list/sexual-help">
                 <paper-card heading="" image="src/images/buttons/sexual.png" alt="sexual" class="menubtn">
                     <div class="btnheader">Sexual Help</div>
                     <div class="card-actions horizontal justified">
                         <div class="card-content">
-                            I feel really bad today.
+                            I don't know what I need, but I want help...
                         </div>
                     </div>
                 </paper-card>
@@ -171,6 +200,30 @@
             is: 'sws-home-view'
 
         });
+        let o = document.getElementById("btn");
+        let h = o.offsetHeight;
+        let w = o.offsetWidth;
+
+        function getCSS(obj,style){
+            if(window.getComputedStyle){
+                return getComputedStyle(obj)[style];
+            }
+            return obj.currentStyle[style];
+        }
+        let oParent = document.getElementById('horizontal');
+        let oLeft = oParent.getElementsByTagName('div')[0];
+        let oCenter = oParent.getElementsByTagName('div')[1];
+        let oRight = oParent.getElementsByTagName('div')[2];
+        function eqHeight(obj1,obj2){
+            let oDis = obj1.clientHeight - obj2.clientHeight;
+            if(oDis > 0){
+                obj2.style.paddingBottom = parseFloat(getCSS(obj2,'padding-bottom')) + oDis + 'px';
+            }else{
+                obj1.style.paddingBottom = parseFloat(getCSS(obj1,'padding-bottom')) +  Math.abs(oDis) + 'px';
+            }
+        }
+        eqHeight(oLeft,oCenter);
+        eqHeight(oLeft,oRight);
     </script>
 
 </dom-module>
