@@ -49,9 +49,10 @@
                     max-width: 320px;
                     width: 100%;
                     max-height: 568px;
-                    height: auto;
+                    height: 0;
                     overflow: hidden;
                     flex: 1;
+                    padding-bottom: 178%;
                 }
                 .all {
                     @apply --layout-center-center;
@@ -62,15 +63,21 @@
                     @apply --layout-center-center;
                 }
                 .viewallbtnheader {
-                    font-size: 50px;
-                    @apply --layout-center-center;
+                    position: relative;
+                    font-size: 45px;
+                    top: 20%;
+                    right: 0;
+                    float: right;
+                    padding-top: 3%;
+                    padding-right: 17%;
                 }
                 .btnheader {
-                    font-size: 2rem;
+                    font-family: "Arial Black";
+                    font-size: 300px;
                     font-weight: bold;
                     @apply --paper-font-headline;
                 }
-                .image {
+                .allpic {
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -87,8 +94,8 @@
         <div align="center" class="all">
             <a href="#/list/view-all">
                 <paper-card alt="all" class="viewall">
+                    <div class="allpic" spacer></div>
                     <div class="viewallbtnheader" spacer>View All</div>
-                    <div class="image"></div>
                 </paper-card>
             </a>
         </div>

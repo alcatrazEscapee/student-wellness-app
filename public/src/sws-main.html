@@ -224,12 +224,20 @@
                         slot="header">
 
                     <app-toolbar>
+                        <!-- home button -->
+                        <a href="#/" tabindex="-1">
+                            <paper-icon-button src="src/images/icons/homeico.svg" alt="home" title="home"></paper-icon-button>
+                        </a>
+
                         <!-- menu button -->
                         <paper-icon-button
                                 drawer-toggle
                                 icon="app:menu"
                                 hidden$="[[_shouldHideMenuButton(pageData.page, narrow)]]">
                         </paper-icon-button>
+
+                        <div condensed-title>Student Resource App</div>
+
                         <!-- emergency button -->
                         <!--
                         <paper-menu-button>
@@ -246,15 +254,9 @@
                         -->
 
                         <a href="#/emergency" tabindex="-1">
-                            <paper-icon-button src="src/images/icons/emergency.png" alt="emergency" title="emergency"></paper-icon-button>
+                            <paper-icon-button src="src/images/icons/emergency.png" aria-setsize="120%" alt="emergency" title="emergency"></paper-icon-button>
                         </a>
-                        <div condensed-title>Student Resource App</div>
 
-
-                        <!-- home button -->
-                        <a href="#/" tabindex="-1">
-                            <paper-icon-button src="src/images/icons/homeico.svg" alt="home" title="home"></paper-icon-button>
-                        </a>
                     </app-toolbar>
 
                     <app-toolbar>

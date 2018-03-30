@@ -1,5 +1,5 @@
 {
-  "name": "Student Resource App",
+  "name": "student-resource-app",
   "scope": "./",
   "start_url": "index.html",
   "display": "standalone",
