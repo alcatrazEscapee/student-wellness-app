@@ -30,6 +30,10 @@
                     background-color: #cecece;
                     color: #37474F;
                 }
+                paper-card.lmenubtn:hover {
+                    background-color: #cecece;
+                    color: #37474F;
+                }
                 paper-card.viewall {
                     width: 100%;
                     max-width: 640px;
@@ -38,14 +42,27 @@
                     font-weight: bold;
                 }
                 paper-card.menubtn {
-                    font: 14px/21px Arial;
                     border: 1px solid #dddddd;
                     padding: 5px 10px;
                     background: #ffffff;
                     color: #696969;
                     text-decoration: none;
                     --paper-card-header-color: #fff;
-                    font-weight: bold;
+                    max-width: 320px;
+                    width: 100%;
+                    max-height: 568px;
+                    height: 0;
+                    overflow: hidden;
+                    flex: 1;
+                    padding-bottom: 160%;
+                }
+                paper-card.lmenubtn {
+                    border: 1px solid #dddddd;
+                    padding: 5px 10px;
+                    background: #ffffff;
+                    color: #696969;
+                    text-decoration: none;
+                    --paper-card-header-color: #fff;
                     max-width: 320px;
                     width: 100%;
                     max-height: 568px;
@@ -53,6 +70,10 @@
                     overflow: hidden;
                     flex: 1;
                     padding-bottom: 178%;
+                }
+                .card-content {
+                    overflow: auto;
+                    font: 14px/21px Arial;
                 }
                 .all {
                     @apply --layout-center-center;
@@ -72,7 +93,6 @@
                     padding-right: 17%;
                 }
                 .btnheader {
-                    font-family: "Arial Black";
                     font-size: 300px;
                     font-weight: bold;
                     @apply --paper-font-headline;
@@ -156,7 +176,7 @@
         <div align="center" class="horizontal">
 
             <a href="#/list/academic-career">
-                <paper-card heading="" image="src/images/buttons/AcaCar.png" alt="acacar" class="menubtn">
+                <paper-card heading="" image="src/images/buttons/AcaCar.png" alt="acacar" class="lmenubtn">
                     <div class="btnheader">Academic / Career</div>
                     <div class="card-actions horizontal justified">
                         <div class="card-content">
@@ -166,7 +186,7 @@
                 </paper-card>
             </a>
             <a href="#/list/harrasement-abuse">
-                <paper-card heading="" image="src/images/buttons/bullying.png" alt="abuse" class="menubtn">
+                <paper-card heading="" image="src/images/buttons/bullying.png" alt="abuse" class="lmenubtn">
                     <div class="btnheader">Harrassment / Abuse</div>
                     <div class="card-actions horizontal justified">
                         <div class="card-content">
