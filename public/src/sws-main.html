@@ -70,9 +70,7 @@
                 background-color: #cecece;
                 color: #37474F;
             }
-            paper-icon-button {
-                color: #fff;
-            }
+
             section {
                 background-color: rgba(221, 221, 221, 0.72);
                 box-sizing: border-box;
@@ -94,6 +92,16 @@
 
         <custom-style>
             <style is="custom-style">
+                paper-icon-button {
+                    color: #fff;
+                }
+                paper-icon-button:hover {
+                    background-color: revert;
+                }
+                paper-icon-button.emergency {
+                    width: 70px;
+                    height: 70px;
+                }
                 app-drawer-layout:not([narrow]) [drawer-toggle] {
                     display: none;
                 }
@@ -151,7 +159,7 @@
             <app-drawer  swipe-open onclick="closeDrawer()"  id="drawer" slot="drawer">
                 <script>
                     function closeDrawer(){
-                        let drawer = this.$$('app-drawer')
+                        let drawer = this.$$('app-drawer');
                         if( !drawer.persistent) drawer.toggle();
                     }
                 </script>
@@ -160,11 +168,11 @@
                     <div class="drawer-content">
                         <h2>Quick Access</h2>
                         <a href="#/list/view-all" class="drawerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/All.png" alt="all" title="View All"></paper-icon-button>
+                            <paper-icon-button noink src="src/images/buttons/All.png" alt="all" title="View All"></paper-icon-button>
                             <span>All Resources</span>
                         </a><br/>
-                        <a href="#/list/mental-health" class="drawerbtns"firfir drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/Mental.png" alt="mental" title="Mental Health"></paper-icon-button>
+                        <a href="#/list/mental-health" class="drawerbtns" drawer-toggle tabindex="-1">
+                            <paper-icon-button noink src="src/images/buttons/Mental.png" alt="mental" title="Mental Health"></paper-icon-button>
                             <span>Mental Health</span>
                         </a><br/>
                         <a href="#/list/physical-health" class="drawerbtns" drawer-toggle tabindex="-1">
@@ -172,40 +180,40 @@
                             <span>Physical Health</span>
                         </a><br/>
                         <a href="#/list/academic-career" class="drawerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/AcaCar.png" alt="acacar" title="Academic & Career"></paper-icon-button>
+                            <paper-icon-button noink src="src/images/buttons/AcaCar.png" alt="acacar" title="Academic & Career"></paper-icon-button>
                             <span>Academic & Career</span>
                         </a><br/>
                         <a href="#/list/politics-policy" class="drawerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/Policy.png" alt="policy" title="Politics & Policy"></paper-icon-button>
+                            <paper-icon-button noink src="src/images/buttons/Policy.png" alt="policy" title="Politics & Policy"></paper-icon-button>
                             <span>Politics & Policy</span>
                         </a><br/>
                         <a href="#/list/identity-culture" class="drawerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/GloCul.png" alt="idcul" title="Identity & Culture"></paper-icon-button>
+                            <paper-icon-button noink src="src/images/buttons/GloCul.png" alt="idcul" title="Identity & Culture"></paper-icon-button>
                             <span>Identity & Culture</span>
                         </a><br/>
                         <a href="#/list/financial-help" class="drawerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/financial.png" alt="financial" title="Financial Help"></paper-icon-button>
+                            <paper-icon-button noink src="src/images/buttons/financial.png" alt="financial" title="Financial Help"></paper-icon-button>
                             <span>Financial Help</span>
                         </a><br/>
-                        <a href="#/list/harrasement-abuse" class="drwerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/bullying.png" alt="bullying" title="Bullying / Harrassment"></paper-icon-button>
+                        <a href="#/list/harrasement-abuse" class="drawerbtns" drawer-toggle tabindex="-1">
+                            <paper-icon-button noink src="src/images/buttons/bullying.png" alt="abuse" title="Bullying / Harrassment"></paper-icon-button>
                             <span>Bullying / Harrassment</span>
                         </a><br/>
                         <a href="#/list/sexual-help" class="drawerbtns" drawer-toggle tabindex="-1">
-                            <paper-icon-button src="src/images/buttons/sexual.png" alt="sexual" title="Sexual Help"></paper-icon-button>
+                            <paper-icon-button noink src="src/images/buttons/sexual.png" alt="sexual" title="Sexual Help"></paper-icon-button>
                             <span>Sexual Help</span>
                         </a><br/>
                         <h2>Info</h2>
                         <a href="http://www.queensu.ca/" class="drawerbtns" tabindex="-1">
-                            <paper-icon-button src="src/images/icons/queenslogo.png" alt="queens" title="queens"></paper-icon-button>
+                            <paper-icon-button noink src="src/images/icons/queenslogo.png" alt="queens" title="queens"></paper-icon-button>
                             <span>Vist Queen's Homepage</span>
                         </a><br/>
                         <a href="http://www.queensu.ca/studentaffairs/student-safety/sequre" class="drawerbtns" tabindex="-1">
-                            <paper-icon-button src="src/images/icons/SeQure.jpg" style ="border-radius: 15%" alt="sequre" title="Download SeQure"></paper-icon-button>
+                            <paper-icon-button noink src="src/images/icons/SeQure.jpg" style ="border-radius: 15%" alt="sequre" title="Download SeQure"></paper-icon-button>
                             <span>Download Sequre App</span>
                         </a><br/>
                         <a href="https://github.com/alcatrazEscapee/student-wellness-app" class="drawerbtns" tabindex="-1">
-                            <paper-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="github" title="github"></paper-icon-button>
+                            <paper-icon-button noink src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="github" title="github"></paper-icon-button>
                             <span>See the Source Code</span>
                         </a><br/>
 
@@ -253,8 +261,9 @@
                         </paper-menu-button>
                         -->
 
+
                         <a href="#/emergency" tabindex="-1">
-                            <paper-icon-button src="src/images/icons/emergency.png" aria-setsize="120%" alt="emergency" title="emergency"></paper-icon-button>
+                            <paper-icon-button src="src/images/icons/emergency.png" alt="emergency" title="emergency" class="emergency"></paper-icon-button>
                         </a>
 
                     </app-toolbar>

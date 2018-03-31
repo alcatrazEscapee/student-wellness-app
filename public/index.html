@@ -1,14 +1,15 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <meta name="description" content="Student Resource App Built by group 589A">
-  <meta name="theme-color" content="#12335e">
-  <link rel="icon" href="src/images/favicon.ico" type="image/ico">
-  <link rel="manifest" href="manifest.json">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Student Resource App Built by group 589A">
+    <meta name="theme-color" content="#12335e">
+    <link rel="icon" href="src/images/favicon.ico" type="image/ico">
+    <link rel="manifest" href="manifest.json">
+    <noscript>Please enable JavaScript in this page</noscript>
 
-	<!-- Older Chrome configuration -->
+    <!-- Older Chrome configuration -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Notes">
     <!-- /Older Chrome configuration -->
@@ -19,49 +20,49 @@
     <link href="src/images/manifest/apple-touch-icon-57x57-precomposed.png" rel="apple-touch-icon-precomposed">
     <!-- /ios Safari configuration -->
 
-  <title>Student Resource App</title>
+    <title>Student Resource App</title>
 
-  <!-- Import Project Dependencies -->
-  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="bower_components/platinum-sw/platinum-sw-elements.html">
-  <link rel="import" href="bower_components/polymerfire/firebase-app.html">
+    <!-- Import Project Dependencies -->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="bower_components/platinum-sw/platinum-sw-elements.html">
+    <link rel="import" href="bower_components/polymerfire/firebase-app.html">
 
-  <!-- Import Main Component -->
-  <link rel="import" href="src/sws-main.html">
+    <!-- Import Main Component -->
+    <link rel="import" href="src/sws-main.html">
 
-  <!-- Add any global styles for body, document, etc. -->
-  <style>
-     body {
-         margin: 0;
-         font-family: 'Roboto', 'Noto', sans-serif;
-         line-height: 1.5;
-         min-height: 100vh;
-         background-color: #f5f5f5;
-     }
- </style>
+    <!-- Add any global styles for body, document, etc. -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', 'Noto', sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+    </style>
 
 </head>
 <body unresolved>
-      <platinum-sw-register
-      auto-register
-      skip-waiting
-      clients-claim
-      reload-on-install
-      href="sw-import.js">
-      <platinum-sw-cache
-        default-cache-strategy="networkFirst">
-      </platinum-sw-cache>
-	</platinum-sw-register>
+<platinum-sw-register
+        auto-register
+        skip-waiting
+        clients-claim
+        reload-on-install
+        href="sw-import.js">
+    <platinum-sw-cache
+            default-cache-strategy="networkFirst">
+    </platinum-sw-cache>
+</platinum-sw-register>
 
-	<firebase-app
-	  name="sws-main"
-	  api-key="AIzaSyDASQ49kg1vx3jQeQpG_F0iOKMVUX9IFW8"
-      auth-domain="student-wellness-app-fcbf0.firebaseapp.com"
-      database-url="https://student-wellness-app-fcbf0.firebaseio.com">
-	</firebase-app>
+<firebase-app
+        name="sws-main"
+        api-key="AIzaSyDASQ49kg1vx3jQeQpG_F0iOKMVUX9IFW8"
+        auth-domain="student-wellness-app-fcbf0.firebaseapp.com"
+        database-url="https://student-wellness-app-fcbf0.firebaseio.com">
+</firebase-app>
 
-  <!-- Main App Component, see import statement above -->
-  <sws-main></sws-main>
+<!-- Main App Component, see import statement above -->
+<sws-main></sws-main>
 
 </body>
 </html>
